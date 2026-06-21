@@ -7,16 +7,17 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
-
+  
+The game looked normal at the beginning, before I ran it. It just told me to guess a number and I did. When I first guessed a number, it told me to go higher but the answer was below my first guess. This told me that the hints were most likely backwards. I tried it again doing the opposite, and it confirmed that the hints were backwards. Another bug I saw was that the New Game button was not working. I expected that after  It was not starting a new game after the orginal game ended. Bug number 3 that I found is that if I change the difficulty level to hard, it will lower the range in turn making it easier to guess rather than harder.
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+|guess of 40| hint says too high | hint says low| no console error
+| press button for new game | new game starts with new number| nothing happens| no console error
+| change difficulty to hard | the range is larger making it difficult to guess the right number | the range is lower | no console error
 
 ---
 
