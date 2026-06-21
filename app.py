@@ -1,16 +1,38 @@
 import random
 import streamlit as st
+from logic_utils import get_range_for_difficulty
 
 def get_range_for_difficulty(difficulty: str):
+    """Return (low, high) inclusive range for a given difficulty."""
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 200
     return 1, 100
 
+    #FIX: Refactored Logic into logic_utils.py using agent mode
+def check_guess(guess, secret):
+    """
+    Compare guess to secret and return (outcome, message).
 
+    outcome examples: "Win", "Too High", "Too Low"
+    """
+    try:
+        if guess == secret:
+            return "Win", "🎉 Correct!"
+        if guess > secret:
+            return "Too High", "📈 Go LOWER!"
+        return "Too Low", "📉 Go HIGHER!"
+    except TypeError:
+        g = str(guess)
+        if g == secret:
+            return "Win", "🎉 Correct!"
+        if g > secret:
+            return "Too High", "📈 Go LOWER!"
+        return "Too Low", "📉 Go HIGHER!"
+        #FIX: Refactored Logic into logic_utils.py using agent mode
 def parse_guess(raw: str):
     if raw is None:
         return False, None, "Enter a guess."
@@ -27,24 +49,6 @@ def parse_guess(raw: str):
         return False, None, "That is not a number."
 
     return True, value, None
-
-
-def check_guess(guess, secret):
-    if guess == secret:
-        return "Win", "🎉 Correct!"
-
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -136,7 +140,7 @@ if new_game:
     st.session_state.secret = random.randint(1, 100)
     st.success("New game started.")
     st.rerun()
-
+#LOGIC BREAKS HERE - NEW GAME DOES NOT RESET THE GAME PROPERLY
 if st.session_state.status != "playing":
     if st.session_state.status == "won":
         st.success("You already won. Start a new game to play again.")
@@ -189,3 +193,4 @@ if submit:
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")
+
