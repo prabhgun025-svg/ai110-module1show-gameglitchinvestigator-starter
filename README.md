@@ -29,17 +29,20 @@ It wrote the code, ran away, and now the game is unplayable.
 - [ ] Detail which bugs you found.
 - [ ] Explain what fixes you applied.
 
+The game's purpose is a simple guessing game in which the player will continue guessing with a limited number of attempts until they get it right. I found 3 particular bugs while playing this game. The first bug was the hint bug, where the hints were reversed. If the correct number was 50, I would guess 40, and it would tell me that 40 is too high, which is incorrect and the opposite. Another bug that I found was that the difficulties was backwards. Normal mode was more difficult compared to hard mode. The game would not also let me use the restart game button despite me pressing it. Using Prompt Engineering, I asked AI to explain the reason as to why I was facing 2 of the bugs. The hints were backwards because in the code, it switched the Low and high conditions and the reason that the difficulties were switched was because the max number was switched. I told AI to fix the code (and get it approved by me first before applying) and apply the code in app.py and logic_util.py. After a few errors, where the AI completely deleted some sections of the code and switched the code from one tab to another, I got the code fixed and the bugs, backward hints and difficluty, were both fixed. 
+
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User Enters a guess of 50
+2. Game returns too low
+3. user enters a guess of 60
+4.Game returns too high
+5. game ends after correct guess
+6. User restarts game and changes difficulty to hard
+7. Same Steps from 1-5
 
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
@@ -48,6 +51,7 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 # pytest tests/
 # ========================= X passed in 0.XXs =========================
 ```
+*Did not complete Challenge 1* 
 
 ## 🚀 Stretch Features
 
