@@ -1,3 +1,6 @@
+import random
+
+
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
@@ -24,3 +27,12 @@ def check_guess(guess, secret):
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+
+
+def reset_new_game(session_state, low: int, high: int):
+    """Reset session state for a new game."""
+    session_state.attempts = 1
+    session_state.secret = random.randint(low, high)
+    session_state.status = "playing"
+    session_state.score = 0
+    session_state.history = []
